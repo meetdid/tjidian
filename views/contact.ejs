@@ -1,0 +1,148 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1>联系我们</h1>
+    <p>设备故障？立即联系我们，专业工程师快速响应</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info-box">
+        <h2>联系方式</h2>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <h4>维修服务热线</h4>
+            <p><a href="tel:<%= settings.phoneShort %>" style="color:#0056b3;font-size:24px;font-weight:bold;"><%= settings.phone %></a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💬</div>
+          <div>
+            <h4>微信咨询</h4>
+            <p>微信号：<strong style="color:#0056b3;"><%= settings.wechat %></strong></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <h4>邮箱</h4>
+            <p><%= settings.email %></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <h4>服务地址</h4>
+            <p><%= settings.address %></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <h4>服务时间</h4>
+            <p><%= settings.workTime %></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🏙️</div>
+          <div>
+            <h4>服务区域</h4>
+            <p>天津市全域（和平、河东、河西、南开、河北、红桥、东丽、西青、津南、北辰、武清、宝坻、静海、宁河、蓟州、滨海新区）</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-box">
+        <h2>在线预约</h2>
+        <% if (success) { %>
+          <div style="padding:15px;background:#d4edda;color:#155724;border-radius:6px;margin-bottom:20px;">
+            预约提交成功！我们会尽快与您联系。
+          </div>
+        <% } %>
+        <form id="appointmentForm" class="appointment-form" onsubmit="return submitAppointment('appointmentForm')">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 *</label>
+              <input type="text" name="name" class="form-control" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label>电话 *</label>
+              <input type="tel" name="phone" class="form-control" placeholder="请输入联系电话" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>公司名称</label>
+            <input type="text" name="company" class="form-control" placeholder="请输入公司名称">
+          </div>
+          <div class="form-group">
+            <label>服务类型</label>
+            <select name="serviceType" class="form-control">
+              <option value="">请选择服务类型</option>
+              <option value="PLC维修">PLC维修</option>
+              <option value="变频器维修">变频器维修</option>
+              <option value="电机维修">电机维修</option>
+              <option value="伺服维修">伺服维修</option>
+              <option value="配电柜维修">配电柜维修</option>
+              <option value="自动化设备维修">自动化设备维修</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>故障描述</label>
+            <textarea name="description" class="form-control" placeholder="请描述设备故障情况，方便我们提前准备" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;padding:15px;font-size:16px;">
+            📝 提交预约
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-gray">
+  <div class="container">
+    <div class="section-title">
+      <h2>服务流程</h2>
+      <p>标准化服务流程，确保每一次维修都专业高效</p>
+    </div>
+    <div class="process-steps" style="color:#212529;">
+      <div class="process-step">
+        <div class="process-step-icon">1</div>
+        <h4 style="color:#212529;">客户咨询</h4>
+        <p style="color:#6c757d;">电话/微信联系</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">2</div>
+        <h4 style="color:#212529;">了解设备情况</h4>
+        <p style="color:#6c757d;">沟通故障详情</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">3</div>
+        <h4 style="color:#212529;">安排工程师</h4>
+        <p style="color:#6c757d;">快速上门服务</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">4</div>
+        <h4 style="color:#212529;">现场检测维修</h4>
+        <p style="color:#6c757d;">先报价后维修</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">5</div>
+        <h4 style="color:#212529;">问题解决</h4>
+        <p style="color:#6c757d;">设备恢复运行</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">6</div>
+        <h4 style="color:#212529;">售后服务</h4>
+        <p style="color:#6c757d;">维修质保跟进</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

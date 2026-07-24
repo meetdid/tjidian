@@ -1,0 +1,40 @@
+<%- include('layout-header', { activeMenu: 'articles' }) %>
+
+<div class="page-header-actions">
+  <h2>文章管理</h2>
+  <a href="/admin/articles/add" class="btn btn-primary">+ 添加文章</a>
+</div>
+
+<div class="admin-card">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>标题</th>
+        <th>分类</th>
+        <th>浏览量</th>
+        <th>发布时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% articles.forEach(function(a) { %>
+        <tr>
+          <td><%= a.id %></td>
+          <td style="max-width:350px;"><%= a.title %></td>
+          <td><%= a.categoryName %></td>
+          <td><%= a.views %></td>
+          <td><%= a.createdAt.substring(0, 10) %></td>
+          <td>
+            <a href="/admin/articles/edit/<%= a.id %>" class="btn btn-small btn-secondary">编辑</a>
+            <form method="post" action="/admin/articles/delete/<%= a.id %>" style="display:inline;" onsubmit="return confirm('确定删除吗？')">
+              <button type="submit" class="btn btn-small btn-danger" style="border:none;cursor:pointer;">删除</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('layout-footer') %>

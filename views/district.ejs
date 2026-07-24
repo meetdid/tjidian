@@ -1,0 +1,117 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1>天津<%= district.name %>机电维修</h1>
+    <p><%= district.name %>工业设备维修服务 · 快速上门 · 专业可靠</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="district-hero">
+      <div class="district-hero-text">
+        <h2><%= district.name %>机电维修服务</h2>
+        <p>天津机电服务中心在<%= district.name %>设有服务点，为<%= district.name %>及周边地区企业提供专业的工业设备维修服务。</p>
+        <p>我们拥有专业的维修工程师团队，熟悉各类工业设备故障处理，可快速响应上门，为企业解决设备故障问题，保障生产顺利进行。</p>
+        <div class="district-features">
+          <div class="district-feature">
+            <h4>⚡ 快速响应</h4>
+            <p><%= district.name %>区域快速上门</p>
+          </div>
+          <div class="district-feature">
+            <h4>🔧 专业维修</h4>
+            <p>经验丰富工程师团队</p>
+          </div>
+          <div class="district-feature">
+            <h4>✅ 售后保障</h4>
+            <p>维修后提供质保</p>
+          </div>
+        </div>
+        <p>
+          <a href="tel:<%= settings.phoneShort %>" class="btn btn-primary">📞 立即咨询</a>
+          <a href="/contact" class="btn btn-secondary" style="margin-left:10px;">📝 在线预约</a>
+        </p>
+      </div>
+      <div class="about-image">📍</div>
+    </div>
+    
+    <div style="margin-top:30px;">
+      <h2 style="text-align:center;margin-bottom:30px;font-size:28px;"><%= district.name %>维修服务项目</h2>
+      <div class="services-grid">
+        <% services.slice(0, 6).forEach(function(service) { %>
+          <div class="service-card">
+            <div class="service-icon">
+              <% if(service.icon === 'plc') { %>⚙️
+              <% } else if(service.icon === 'inverter') { %>🔌
+              <% } else if(service.icon === 'motor') { %>⚡
+              <% } else if(service.icon === 'servo') { %>🎯
+              <% } else if(service.icon === 'panel') { %>🗄️
+              <% } else if(service.icon === 'compressor') { %>💨
+              <% } else if(service.icon === 'pump') { %>💧
+              <% } else if(service.icon === 'auto') { %>🤖
+              <% } else if(service.icon === 'cnc') { %>🔧
+              <% } else { %>🔧<% } %>
+            </div>
+            <h3><%= service.name %></h3>
+            <p><%= service.summary %></p>
+            <a href="/service/<%= service.slug %>" class="service-link">了解详情 →</a>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+    
+    <div style="margin-top:50px;">
+      <h2 style="text-align:center;margin-bottom:30px;font-size:28px;"><%= district.name %>维修案例</h2>
+      <% if (cases.length > 0) { %>
+        <div class="cases-grid">
+          <% cases.slice(0, 3).forEach(function(c) { %>
+            <div class="case-card">
+              <div class="case-image">
+                <span class="case-category"><%= c.categoryName %></span>
+                🔧
+              </div>
+              <div class="case-content">
+                <h3><a href="/case/<%= c.slug %>"><%= c.title %></a></h3>
+                <div class="case-meta">
+                  <span>📍 <%= c.district %></span>
+                  <span>📅 <%= c.createdAt.substring(0, 10) %></span>
+                </div>
+                <p class="case-desc"><%= c.description %></p>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
+    
+    <div style="margin-top:50px;background:#f8f9fa;padding:40px;border-radius:12px;">
+      <h2 style="text-align:center;margin-bottom:20px;font-size:24px;"><%= district.name %>服务范围</h2>
+      <p style="text-align:center;color:#6c757d;max-width:800px;margin:0 auto 20px;">
+        天津机电服务中心覆盖<%= district.name %>全域，包括各工业园区、经济开发区、科技园区等区域，
+        为当地企业提供PLC维修、变频器维修、电机维修、伺服维修、自动化设备维修等专业服务。
+      </p>
+      <div style="text-align:center;">
+        <a href="/contact" class="btn btn-primary">📝 立即预约上门维修</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2><%= district.name %>设备维修？立即联系我们！</h2>
+      <p>专业维修工程师快速响应，<%= district.name %>区域上门服务</p>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-icon">📞</div>
+      <div class="cta-phone-text">
+        <p>维修服务热线</p>
+        <a href="tel:<%= settings.phoneShort %>"><%= settings.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

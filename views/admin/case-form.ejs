@@ -1,0 +1,75 @@
+<%- include('layout-header', { activeMenu: 'cases' }) %>
+
+<div class="page-header-actions">
+  <h2><%= caseItem ? '编辑案例' : '添加案例' %></h2>
+  <a href="/admin/cases" class="btn btn-secondary">返回列表</a>
+</div>
+
+<% if (error) { %>
+  <div class="admin-alert admin-alert-error"><%= error %></div>
+<% } %>
+
+<div class="admin-card">
+  <form method="post" action="<%= caseItem ? '/admin/cases/edit/' + caseItem.id : '/admin/cases/add' %>">
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>案例标题 *</label>
+        <input type="text" name="title" value="<%= caseItem ? caseItem.title : '' %>" required>
+      </div>
+      <div class="form-group">
+        <label>URL Slug *</label>
+        <input type="text" name="slug" value="<%= caseItem ? caseItem.slug : '' %>" required>
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>分类</label>
+        <select name="category">
+          <% [['plc','PLC维修案例'],['inverter','变频器维修案例'],['motor','电机维修案例'],['servo','伺服维修案例'],['auto','自动化维修案例'],['cnc','数控维修案例']].forEach(function(cat) { %>
+            <option value="<%= cat[0] %>" <%= caseItem && caseItem.category === cat[0] ? 'selected' : '' %>><%= cat[1] %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>分类名称</label>
+        <input type="text" name="categoryName" value="<%= caseItem ? caseItem.categoryName : '' %>">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>设备类型</label>
+        <input type="text" name="deviceType" value="<%= caseItem ? caseItem.deviceType : '' %>">
+      </div>
+      <div class="form-group">
+        <label>所在区域</label>
+        <input type="text" name="district" value="<%= caseItem ? caseItem.district : '' %>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>故障现象</label>
+      <textarea name="faultSymptom" rows="3"><%= caseItem ? caseItem.faultSymptom : '' %></textarea>
+    </div>
+    <div class="form-group">
+      <label>维修过程</label>
+      <textarea name="repairProcess" rows="5"><%= caseItem ? caseItem.repairProcess : '' %></textarea>
+    </div>
+    <div class="form-group">
+      <label>解决结果</label>
+      <textarea name="result" rows="3"><%= caseItem ? caseItem.result : '' %></textarea>
+    </div>
+    <div class="form-group">
+      <label>SEO关键词</label>
+      <input type="text" name="keywords" value="<%= caseItem ? caseItem.keywords : '' %>">
+    </div>
+    <div class="form-group">
+      <label>SEO描述</label>
+      <textarea name="description" rows="2"><%= caseItem ? caseItem.description : '' %></textarea>
+    </div>
+    <div style="margin-top:20px;">
+      <button type="submit" class="btn btn-primary">保存</button>
+      <a href="/admin/cases" class="btn btn-secondary" style="margin-left:10px;">取消</a>
+    </div>
+  </form>
+</div>
+
+<%- include('layout-footer') %>

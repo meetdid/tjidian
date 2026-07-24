@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "和平区",
+    "slug": "heping"
+  },
+  {
+    "id": 2,
+    "name": "河东区",
+    "slug": "hedong"
+  },
+  {
+    "id": 3,
+    "name": "河西区",
+    "slug": "hexi"
+  },
+  {
+    "id": 4,
+    "name": "南开区",
+    "slug": "nankai"
+  },
+  {
+    "id": 5,
+    "name": "河北区",
+    "slug": "hebei"
+  },
+  {
+    "id": 6,
+    "name": "红桥区",
+    "slug": "hongqiao"
+  },
+  {
+    "id": 7,
+    "name": "东丽区",
+    "slug": "dongli"
+  },
+  {
+    "id": 8,
+    "name": "西青区",
+    "slug": "xiqing"
+  },
+  {
+    "id": 9,
+    "name": "津南区",
+    "slug": "jinnan"
+  },
+  {
+    "id": 10,
+    "name": "北辰区",
+    "slug": "beichen"
+  },
+  {
+    "id": 11,
+    "name": "武清区",
+    "slug": "wuqing"
+  },
+  {
+    "id": 12,
+    "name": "宝坻区",
+    "slug": "baodi"
+  },
+  {
+    "id": 13,
+    "name": "静海区",
+    "slug": "jinghai"
+  },
+  {
+    "id": 14,
+    "name": "宁河区",
+    "slug": "ninghe"
+  },
+  {
+    "id": 15,
+    "name": "蓟州区",
+    "slug": "jizhou"
+  },
+  {
+    "id": 16,
+    "name": "滨海新区",
+    "slug": "binhai"
+  }
+]

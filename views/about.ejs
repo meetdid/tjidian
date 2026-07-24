@@ -1,0 +1,97 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1>关于我们</h1>
+    <p>专业机电维修，让设备快速恢复运行</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="about-section">
+      <div class="about-text">
+        <h2>关于天津机电服务中心</h2>
+        <p>天津机电服务中心是一家专注于工业设备维修的专业服务机构，致力于为天津地区企业提供快速、专业、可靠的设备维修服务。</p>
+        <p>我们拥有一支经验丰富的维修工程师团队，熟悉西门子、ABB、施耐德、三菱、台达、汇川等国内外知名品牌的工业设备，可提供PLC维修、变频器维修、电机维修、伺服维修、自动化设备维修等全方位服务。</p>
+        <p>多年来，我们已为天津及周边地区数百家企业提供了专业的维修服务，涉及汽车零部件、电子制造、食品加工、机械加工、制药、化工等多个行业，赢得了客户的广泛认可和信赖。</p>
+      </div>
+      <div class="about-image">🏭</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-gray">
+  <div class="container">
+    <div class="section-title">
+      <h2>我们的优势</h2>
+      <p>专业团队、快速响应、可靠服务</p>
+    </div>
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <div class="advantage-icon">🏆</div>
+        <h3>丰富经验</h3>
+        <p>多年工业设备维修经验，服务天津地区数百家企业客户，熟悉各类设备故障处理。</p>
+      </div>
+      <div class="advantage-item">
+        <div class="advantage-icon">⚡</div>
+        <h3>快速响应</h3>
+        <p>天津区域快速安排工程师上门，24小时服务响应，紧急情况可加急处理。</p>
+      </div>
+      <div class="advantage-item">
+        <div class="advantage-icon">🔧</div>
+        <h3>专业技术</h3>
+        <p>专业维修工程师团队，熟悉西门子、ABB、三菱、台达等多品牌工业设备。</p>
+      </div>
+      <div class="advantage-item">
+        <div class="advantage-icon">✅</div>
+        <h3>诚信服务</h3>
+        <p>透明沟通，先检测后报价，解决实际问题，维修后提供质保，让客户放心。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>服务理念</h2>
+      <p>以客户为中心，以质量为根本</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1000px;margin:0 auto;">
+      <div style="text-align:center;padding:30px;background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <div style="font-size:48px;margin-bottom:15px;">🎯</div>
+        <h3 style="margin-bottom:10px;">专业专注</h3>
+        <p style="color:#6c757d;font-size:14px;line-height:1.8;">专注工业设备维修领域，深耕细作，不断提升技术水平和服务质量。</p>
+      </div>
+      <div style="text-align:center;padding:30px;background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <div style="font-size:48px;margin-bottom:15px;">💎</div>
+        <h3 style="margin-bottom:10px;">品质保证</h3>
+        <p style="color:#6c757d;font-size:14px;line-height:1.8;">严格把控维修质量，使用优质配件，维修后提供质保期服务。</p>
+      </div>
+      <div style="text-align:center;padding:30px;background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <div style="font-size:48px;margin-bottom:15px;">🤝</div>
+        <h3 style="margin-bottom:10px;">客户至上</h3>
+        <p style="color:#6c757d;font-size:14px;line-height:1.8;">以客户需求为导向，透明沟通，诚信服务，解决客户实际问题。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>设备故障？立即联系我们！</h2>
+      <p>专业维修工程师快速响应，天津地区上门服务</p>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-icon">📞</div>
+      <div class="cta-phone-text">
+        <p>维修服务热线</p>
+        <a href="tel:<%= settings.phoneShort %>"><%= settings.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

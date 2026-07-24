@@ -1,0 +1,83 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1><%= article.title %></h1>
+    <p><%= article.categoryName %></p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:40px;">
+      <div class="article-content">
+        <h1><%= article.title %></h1>
+        <div class="article-meta">
+          <span>📅 <%= article.createdAt.substring(0, 10) %></span>
+          <span>✍️ <%= article.author %></span>
+          <span>👁️ <%= article.views %> 阅读</span>
+          <span>🏷️ <%= article.categoryName %></span>
+        </div>
+        
+        <div class="article-body">
+          <%- article.content %>
+        </div>
+        
+        <div style="margin-top:40px;padding-top:25px;border-top:1px solid #e9ecef;">
+          <p style="color:#6c757d;font-size:14px;">
+            <strong>关键词：</strong><%= article.keywords %>
+          </p>
+        </div>
+        
+        <div style="margin-top:30px;padding:25px;background:#f0f7ff;border-radius:8px;border-left:4px solid #0056b3;">
+          <h3 style="color:#0056b3;margin-bottom:10px;">💡 设备有问题？联系我们！</h3>
+          <p style="color:#495057;margin-bottom:15px;">天津机电服务中心专业维修各类工业设备，快速上门，先检测后报价。</p>
+          <p>
+            <a href="tel:<%= settings.phoneShort %>" class="btn btn-primary">📞 立即咨询</a>
+            <a href="/contact" class="btn btn-secondary" style="margin-left:10px;">📝 在线预约</a>
+          </p>
+        </div>
+      </div>
+      
+      <div>
+        <div class="sidebar-widget">
+          <h3>热门文章</h3>
+          <ul class="sidebar-list">
+            <% relatedArticles.forEach(function(a) { %>
+              <li><a href="/news/<%= a.slug %>"><%= a.title %></a></li>
+            <% }); %>
+          </ul>
+        </div>
+        
+        <div class="sidebar-widget" style="background:linear-gradient(135deg,#0056b3 0%,#003d82 100%);color:white;">
+          <h3 style="color:white;">维修咨询</h3>
+          <p style="font-size:14px;margin-bottom:15px;line-height:1.8;">设备故障？立即联系我们的维修工程师。</p>
+          <p style="font-size:20px;font-weight:bold;margin-bottom:10px;">📞 <%= settings.phone %></p>
+          <p style="font-size:13px;opacity:0.8;">微信：<%= settings.wechat %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "<%= article.title %>",
+  "description": "<%= article.description %>",
+  "author": {
+    "@type": "Organization",
+    "name": "天津机电服务中心"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "天津机电服务中心"
+  },
+  "datePublished": "<%= article.createdAt %>",
+  "dateModified": "<%= article.createdAt %>",
+  "mainEntityOfPage": "https://www.tjidian.com/news/<%= article.slug %>"
+}
+</script>
+
+<%- include('partials/footer') %>

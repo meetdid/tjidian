@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1>维修案例</h1>
+    <p>真实维修案例展示，见证我们的专业实力</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="category-tabs">
+      <a href="/cases" class="category-tab <%= !currentCategory ? 'active' : '' %>">全部案例</a>
+      <% categories.forEach(function(cat) { %>
+        <a href="/cases?category=<%= cat.key %>" class="category-tab <%= currentCategory === cat.key ? 'active' : '' %>"><%= cat.name %></a>
+      <% }); %>
+    </div>
+    
+    <% if (cases.length > 0) { %>
+      <div class="cases-grid">
+        <% cases.forEach(function(c) { %>
+          <div class="case-card">
+            <div class="case-image">
+              <span class="case-category"><%= c.categoryName %></span>
+              🔧
+            </div>
+            <div class="case-content">
+              <h3><a href="/case/<%= c.slug %>"><%= c.title %></a></h3>
+              <div class="case-meta">
+                <span>📍 <%= c.district %></span>
+                <span>📅 <%= c.createdAt.substring(0, 10) %></span>
+              </div>
+              <p class="case-desc"><%= c.description %></p>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <div style="text-align:center;padding:60px 0;color:#999;">
+        <p style="font-size:48px;margin-bottom:20px;">📋</p>
+        <p>暂无相关案例</p>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>有类似设备故障？联系我们！</h2>
+      <p>专业维修工程师快速响应，天津地区上门服务</p>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-icon">📞</div>
+      <div class="cta-phone-text">
+        <p>维修服务热线</p>
+        <a href="tel:<%= settings.phoneShort %>"><%= settings.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

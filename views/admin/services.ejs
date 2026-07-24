@@ -1,0 +1,40 @@
+<%- include('layout-header', { activeMenu: 'services' }) %>
+
+<div class="page-header-actions">
+  <h2>服务项目管理</h2>
+  <a href="/admin/services/add" class="btn btn-primary">+ 添加服务项目</a>
+</div>
+
+<div class="admin-card">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>服务名称</th>
+        <th>Slug</th>
+        <th>简介</th>
+        <th>排序</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% services.forEach(function(s) { %>
+        <tr>
+          <td><%= s.id %></td>
+          <td><%= s.name %></td>
+          <td><%= s.slug %></td>
+          <td style="max-width:300px;"><%= s.summary %></td>
+          <td><%= s.sort %></td>
+          <td>
+            <a href="/admin/services/edit/<%= s.id %>" class="btn btn-small btn-secondary">编辑</a>
+            <form method="post" action="/admin/services/delete/<%= s.id %>" style="display:inline;" onsubmit="return confirm('确定删除吗？')">
+              <button type="submit" class="btn btn-small btn-danger" style="border:none;cursor:pointer;">删除</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('layout-footer') %>

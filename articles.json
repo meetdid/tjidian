@@ -1,0 +1,13 @@
+[
+  {
+    "name": "张三",
+    "phone": "13800138000",
+    "company": "测试公司",
+    "serviceType": "PLC维修",
+    "description": "测试预约",
+    "source": "网站",
+    "id": 1,
+    "createdAt": "2026-07-23T15:57:14.138Z",
+    "status": "pending"
+  }
+]

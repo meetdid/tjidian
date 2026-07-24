@@ -1,0 +1,65 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1><%= service.name %></h1>
+    <p><%= service.summary %></p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="district-hero">
+      <div class="district-hero-text">
+        <h2>专业<%= service.name %>服务</h2>
+        <p><%= service.description %></p>
+        <p>我们拥有专业的<%= service.name %>技术团队和丰富的维修经验，为天津地区企业提供快速、专业、可靠的维修服务。</p>
+      </div>
+      <div class="about-image">🔧</div>
+    </div>
+    
+    <div class="article-content" style="margin-top: 40px;">
+      <%- service.content %>
+    </div>
+    
+    <div style="margin-top: 40px;">
+      <h2 style="text-align:center;margin-bottom:30px;font-size:28px;">相关维修案例</h2>
+      <div class="cases-grid">
+        <% relatedCases.forEach(function(c) { %>
+          <div class="case-card">
+            <div class="case-image">
+              <span class="case-category"><%= c.categoryName %></span>
+              🔧
+            </div>
+            <div class="case-content">
+              <h3><a href="/case/<%= c.slug %>"><%= c.title %></a></h3>
+              <div class="case-meta">
+                <span>📍 <%= c.district %></span>
+                <span>📅 <%= c.createdAt.substring(0, 10) %></span>
+              </div>
+              <p class="case-desc"><%= c.description %></p>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>需要<%= service.name %>？立即联系我们！</h2>
+      <p>专业维修工程师快速响应，天津地区上门服务</p>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-icon">📞</div>
+      <div class="cta-phone-text">
+        <p>维修服务热线</p>
+        <a href="tel:<%= settings.phoneShort %>"><%= settings.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

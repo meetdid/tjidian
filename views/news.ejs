@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+  <div class="container">
+    <h1>行业资讯</h1>
+    <p>分享工业设备维修知识，了解最新行业动态</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="category-tabs">
+      <a href="/news" class="category-tab <%= !currentCategory ? 'active' : '' %>">全部资讯</a>
+      <% categories.forEach(function(cat) { %>
+        <a href="/news?category=<%= cat.key %>" class="category-tab <%= currentCategory === cat.key ? 'active' : '' %>"><%= cat.name %></a>
+      <% }); %>
+    </div>
+    
+    <% if (articles.length > 0) { %>
+      <div class="news-grid">
+        <% articles.forEach(function(article) { %>
+          <div class="news-card">
+            <div class="news-image">
+              <span class="news-category"><%= article.categoryName %></span>
+              📄
+            </div>
+            <div class="news-content">
+              <div class="news-date">📅 <%= article.createdAt.substring(0, 10) %> · 👁️ <%= article.views %></div>
+              <h3><a href="/news/<%= article.slug %>"><%= article.title %></a></h3>
+              <p class="news-summary"><%= article.summary %></p>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <div style="text-align:center;padding:60px 0;color:#999;">
+        <p style="font-size:48px;margin-bottom:20px;">📰</p>
+        <p>暂无相关资讯</p>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>设备故障？立即联系我们！</h2>
+      <p>专业维修工程师快速响应，天津地区上门服务</p>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-icon">📞</div>
+      <div class="cta-phone-text">
+        <p>维修服务热线</p>
+        <a href="tel:<%= settings.phoneShort %>"><%= settings.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

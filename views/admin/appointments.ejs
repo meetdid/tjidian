@@ -1,0 +1,75 @@
+<%- include('layout-header', { activeMenu: 'appointments' }) %>
+
+<div class="page-header-actions">
+  <h2>预约管理</h2>
+  <div style="display:flex;gap:10px;">
+    <a href="/admin/appointments" class="btn btn-small <%= !currentStatus ? 'btn-primary' : 'btn-secondary' %>">全部</a>
+    <a href="/admin/appointments?status=pending" class="btn btn-small <%= currentStatus === 'pending' ? 'btn-primary' : 'btn-secondary' %>">待处理</a>
+    <a href="/admin/appointments?status=processed" class="btn btn-small <%= currentStatus === 'processed' ? 'btn-primary' : 'btn-secondary' %>">已处理</a>
+    <a href="/admin/appointments?status=completed" class="btn btn-small <%= currentStatus === 'completed' ? 'btn-primary' : 'btn-secondary' %>">已完成</a>
+  </div>
+</div>
+
+<div class="admin-card">
+  <% if (appointments.length > 0) { %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>姓名</th>
+          <th>电话</th>
+          <th>公司</th>
+          <th>服务类型</th>
+          <th>状态</th>
+          <th>提交时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% appointments.forEach(function(a) { %>
+          <tr>
+            <td><%= a.id %></td>
+            <td><%= a.name %></td>
+            <td><%= a.phone %></td>
+            <td><%= a.company || '-' %></td>
+            <td><%= a.serviceType || '-' %></td>
+            <td>
+              <span class="status-badge status-<%= a.status %>">
+                <% if(a.status === 'pending') { %>待处理
+                <% } else if(a.status === 'processed') { %>已处理
+                <% } else if(a.status === 'completed') { %>已完成
+                <% } else { %><%= a.status %><% } %>
+              </span>
+            </td>
+            <td><%= a.createdAt.substring(0, 16).replace('T', ' ') %></td>
+            <td>
+              <form method="post" action="/admin/appointments/status/<%= a.id %>" style="display:inline;">
+                <select name="status" onchange="this.form.submit()" style="padding:4px 8px;font-size:12px;border-radius:4px;border:1px solid #ced4da;">
+                  <option value="pending" <%= a.status === 'pending' ? 'selected' : '' %>>待处理</option>
+                  <option value="processed" <%= a.status === 'processed' ? 'selected' : '' %>>已处理</option>
+                  <option value="completed" <%= a.status === 'completed' ? 'selected' : '' %>>已完成</option>
+                </select>
+              </form>
+              <form method="post" action="/admin/appointments/delete/<%= a.id %>" style="display:inline;" onsubmit="return confirm('确定删除吗？')">
+                <button type="submit" class="btn btn-small btn-danger" style="border:none;cursor:pointer;">删除</button>
+              </form>
+            </td>
+          </tr>
+          <% if (a.description) { %>
+            <tr>
+              <td colspan="8" style="background:#f8f9fa;padding:10px 15px;color:#6c757d;font-size:13px;">
+                <strong>故障描述：</strong><%= a.description %>
+              </td>
+            </tr>
+          <% } %>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <div style="text-align:center;padding:40px;color:#adb5bd;">
+      暂无预约数据
+    </div>
+  <% } %>
+</div>
+
+<%- include('layout-footer') %>

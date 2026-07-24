@@ -1,0 +1,57 @@
+<%- include('layout-header', { activeMenu: 'services' }) %>
+
+<div class="page-header-actions">
+  <h2><%= service ? '编辑服务项目' : '添加服务项目' %></h2>
+  <a href="/admin/services" class="btn btn-secondary">返回列表</a>
+</div>
+
+<% if (error) { %>
+  <div class="admin-alert admin-alert-error"><%= error %></div>
+<% } %>
+
+<div class="admin-card">
+  <form method="post" action="<%= service ? '/admin/services/edit/' + service.id : '/admin/services/add' %>">
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>服务名称 *</label>
+        <input type="text" name="name" value="<%= service ? service.name : '' %>" required>
+      </div>
+      <div class="form-group">
+        <label>URL Slug *</label>
+        <input type="text" name="slug" value="<%= service ? service.slug : '' %>" placeholder="如：plc-weixiu" required>
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>图标标识</label>
+        <select name="icon">
+          <% ['plc','inverter','motor','servo','panel','compressor','pump','auto','cnc'].forEach(function(icon) { %>
+            <option value="<%= icon %>" <%= service && service.icon === icon ? 'selected' : '' %>><%= icon %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>排序</label>
+        <input type="number" name="sort" value="<%= service ? service.sort : 0 %>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>简短描述</label>
+      <input type="text" name="summary" value="<%= service ? service.summary : '' %>">
+    </div>
+    <div class="form-group">
+      <label>详细描述</label>
+      <textarea name="description" rows="4"><%= service ? service.description : '' %></textarea>
+    </div>
+    <div class="form-group">
+      <label>详细内容（支持HTML）</label>
+      <textarea name="content" rows="15"><%= service ? service.content : '' %></textarea>
+    </div>
+    <div style="margin-top:20px;">
+      <button type="submit" class="btn btn-primary">保存</button>
+      <a href="/admin/services" class="btn btn-secondary" style="margin-left:10px;">取消</a>
+    </div>
+  </form>
+</div>
+
+<%- include('layout-footer') %>

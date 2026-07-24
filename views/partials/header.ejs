@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= title %></title>
+  <meta name="keywords" content="<%= keywords %>">
+  <meta name="description" content="<%= description %>">
+  <meta name="author" content="天津机电服务中心">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.tjidian.com<%= currentUrl %>">
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="天津机电服务中心">
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  <div style="background:#1a2332;color:rgba(255,255,255,0.8);font-size:13px;padding:8px 0;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <span style="margin-right:20px;">维修热线：<%= settings.phone %></span>
+        <span>服务时间：<%= settings.workTime %></span>
+      </div>
+      <div>
+        <a href="/contact" style="color:rgba(255,255,255,0.8);margin-left:20px;text-decoration:none;">在线预约</a>
+        <a href="/about" style="color:rgba(255,255,255,0.8);margin-left:20px;text-decoration:none;">关于我们</a>
+      </div>
+    </div>
+  </div>
+  <div style="background:white;padding:15px 0;box-shadow:0 2px 8px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;">
+      <a href="/" style="display:flex;align-items:center;text-decoration:none;color:#0056b3;font-size:28px;font-weight:bold;letter-spacing:1px;">TJIDIAN</a>
+      <nav style="display:flex;align-items:center;gap:30px;">
+        <a href="/" style="color:<%= currentUrl === '/' ? '#0056b3' : '#495057' %>;font-weight:500;text-decoration:none;font-size:15px;">首页</a>
+        <a href="/services" style="color:<%= currentUrl.startsWith('/service') ? '#0056b3' : '#495057' %>;font-weight:500;text-decoration:none;font-size:15px;">维修项目</a>
+        <a href="/cases" style="color:<%= currentUrl.startsWith('/case') ? '#0056b3' : '#495057' %>;font-weight:500;text-decoration:none;font-size:15px;">维修案例</a>
+        <a href="/news" style="color:<%= currentUrl.startsWith('/news') ? '#0056b3' : '#495057' %>;font-weight:500;text-decoration:none;font-size:15px;">行业资讯</a>
+        <a href="/about" style="color:<%= currentUrl === '/about' ? '#0056b3' : '#495057' %>;font-weight:500;text-decoration:none;font-size:15px;">关于我们</a>
+        <a href="/contact" style="color:<%= currentUrl === '/contact' ? '#0056b3' : '#495057' %>;font-weight:500;text-decoration:none;font-size:15px;">联系我们</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:40px;height:40px;background:#0056b3;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:14px;">TEL</div>
+        <div>
+          <div style="font-size:12px;color:#6c757d;">维修服务热线</div>
+          <a href="tel:<%= settings.phoneShort %>" style="font-size:16px;font-weight:bold;color:#0056b3;text-decoration:none;"><%= settings.phone %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if (typeof breadcrumb !== 'undefined' && breadcrumb) { %>
+  <div style="background:#f8f9fa;padding:15px 0;font-size:14px;color:#6c757d;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 20px;">
+      <% breadcrumb.forEach(function(item, index) { %>
+        <% if (index < breadcrumb.length - 1) { %>
+          <a href="<%= item.url %>" style="color:#6c757d;text-decoration:none;"><%= item.name %></a>
+          <span style="margin:0 8px;color:#dee2e6;">/</span>
+        <% } else { %>
+          <span style="color:#0056b3;"><%= item.name %></span>
+        <% } %>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>

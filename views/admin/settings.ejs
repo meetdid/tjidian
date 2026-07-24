@@ -1,0 +1,100 @@
+<%- include('layout-header', { activeMenu: 'settings' }) %>
+
+<div class="page-header-actions">
+  <h2>网站设置</h2>
+</div>
+
+<% if (success) { %>
+  <div class="admin-alert admin-alert-success"><%= success %></div>
+<% } %>
+<% if (error) { %>
+  <div class="admin-alert admin-alert-error"><%= error %></div>
+<% } %>
+
+<div class="admin-card">
+  <form method="post" action="/admin/settings">
+    <h3 style="margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid #e9ecef;font-size:18px;">基本信息</h3>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>网站名称</label>
+        <input type="text" name="siteName" value="<%= settings.siteName %>">
+      </div>
+      <div class="form-group">
+        <label>SEO标题</label>
+        <input type="text" name="siteTitle" value="<%= settings.siteTitle %>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>SEO关键词</label>
+      <input type="text" name="siteKeywords" value="<%= settings.siteKeywords %>">
+    </div>
+    <div class="form-group">
+      <label>SEO描述</label>
+      <textarea name="siteDescription" rows="2"><%= settings.siteDescription %></textarea>
+    </div>
+    
+    <h3 style="margin:30px 0 20px;padding-bottom:15px;border-bottom:1px solid #e9ecef;font-size:18px;">联系方式</h3>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>电话（显示格式）</label>
+        <input type="text" name="phone" value="<%= settings.phone %>">
+      </div>
+      <div class="form-group">
+        <label>电话（拨号用，纯数字）</label>
+        <input type="text" name="phoneShort" value="<%= settings.phoneShort %>">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>微信号</label>
+        <input type="text" name="wechat" value="<%= settings.wechat %>">
+      </div>
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="text" name="email" value="<%= settings.email %>">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>地址</label>
+        <input type="text" name="address" value="<%= settings.address %>">
+      </div>
+      <div class="form-group">
+        <label>服务时间</label>
+        <input type="text" name="workTime" value="<%= settings.workTime %>">
+      </div>
+    </div>
+    
+    <h3 style="margin:30px 0 20px;padding-bottom:15px;border-bottom:1px solid #e9ecef;font-size:18px;">首页Banner</h3>
+    <div class="form-group">
+      <label>Banner主标题</label>
+      <input type="text" name="bannerTitle" value="<%= settings.bannerTitle %>">
+    </div>
+    <div class="form-group">
+      <label>Banner副标题</label>
+      <input type="text" name="bannerSubtitle" value="<%= settings.bannerSubtitle %>">
+    </div>
+    <div class="form-group">
+      <label>Banner描述</label>
+      <textarea name="bannerDesc" rows="2"><%= settings.bannerDesc %></textarea>
+    </div>
+    
+    <h3 style="margin:30px 0 20px;padding-bottom:15px;border-bottom:1px solid #e9ecef;font-size:18px;">管理员账号</h3>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>管理员用户名</label>
+        <input type="text" name="adminUser" value="<%= settings.adminUser %>">
+      </div>
+      <div class="form-group">
+        <label>管理员密码</label>
+        <input type="text" name="adminPass" value="<%= settings.adminPass %>">
+      </div>
+    </div>
+    
+    <div style="margin-top:30px;">
+      <button type="submit" class="btn btn-primary">保存设置</button>
+    </div>
+  </form>
+</div>
+
+<%- include('layout-footer') %>

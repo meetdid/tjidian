@@ -1,0 +1,85 @@
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="logo">
+            <div class="logo-icon">⚡</div>
+            <div class="logo-text">
+              <h1>天津机电服务中心</h1>
+            </div>
+          </div>
+          <p>专注天津地区工业设备维修，提供PLC维修、变频器维修、电机维修、伺服维修、自动化设备维修等专业服务。快速响应，专业可靠。</p>
+          <p>专业机电维修，让设备快速恢复运行。</p>
+        </div>
+        <div class="footer-col">
+          <h4>维修项目</h4>
+          <ul class="footer-links">
+            <% services.slice(0, 6).forEach(function(service) { %>
+              <li><a href="/service/<%= service.slug %>"><%= service.name %></a></li>
+            <% }); %>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>快捷导航</h4>
+          <ul class="footer-links">
+            <li><a href="/">网站首页</a></li>
+            <li><a href="/services">维修项目</a></li>
+            <li><a href="/cases">维修案例</a></li>
+            <li><a href="/news">行业资讯</a></li>
+            <li><a href="/about">关于我们</a></li>
+            <li><a href="/contact">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul class="footer-contact">
+            <li><i>📞</i><div><strong>维修热线：</strong><br><%= settings.phone %></div></li>
+            <li><i>💬</i><div><strong>微信咨询：</strong><br><%= settings.wechat %></div></li>
+            <li><i>📍</i><div><strong>服务地址：</strong><br><%= settings.address %></div></li>
+            <li><i>🕐</i><div><strong>服务时间：</strong><br><%= settings.workTime %></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>Copyright © 2024 天津机电服务中心 版权所有 | 津ICP备XXXXXXXX号</p>
+        <p>专业机电维修 · 快速响应 · 可靠服务</p>
+      </div>
+    </div>
+  </footer>
+  
+  <div class="floating-btns">
+    <a href="tel:<%= settings.phoneShort %>" class="floating-btn floating-btn-phone" title="电话咨询">
+      <i>📞</i>
+      <span>电话</span>
+    </a>
+    <a href="/contact" class="floating-btn" title="在线预约">
+      <i>📝</i>
+      <span>预约</span>
+    </a>
+    <a href="#" class="floating-btn" title="微信咨询" onclick="showWechat();return false;">
+      <i>💬</i>
+      <span>微信</span>
+    </a>
+    <a href="#" class="floating-btn" title="返回顶部" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+      <i>↑</i>
+      <span>顶部</span>
+    </a>
+  </div>
+  
+  <div id="wechatModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;" onclick="hideWechat()">
+    <div style="background:white;padding:30px;border-radius:12px;text-align:center;max-width:300px;" onclick="event.stopPropagation()">
+      <h3 style="margin-bottom:15px;font-size:18px;">微信咨询</h3>
+      <div style="width:200px;height:200px;margin:0 auto 15px;background:#f5f5f5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:60px;">
+        📱
+      </div>
+      <p style="color:#666;font-size:14px;margin-bottom:10px;">微信号：<strong style="color:#0056b3;"><%= settings.wechat %></strong></p>
+      <p style="color:#999;font-size:13px;">添加微信，快速咨询维修服务</p>
+      <button onclick="hideWechat()" style="margin-top:15px;padding:8px 20px;background:#0056b3;color:white;border:none;border-radius:6px;cursor:pointer;">关闭</button>
+    </div>
+  </div>
+  
+  <script src="/public/js/main.js"></script>
+</body>
+</html>

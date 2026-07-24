@@ -1,0 +1,248 @@
+<%- include('partials/header') %>
+
+<section class="banner">
+  <div class="container">
+    <div class="banner-content">
+      <span class="banner-tag">⚡ 天津专业工业设备维修服务商</span>
+      <h1><%= settings.bannerTitle %></h1>
+      <p class="banner-subtitle"><%= settings.bannerSubtitle %></p>
+      <p class="banner-desc"><%= settings.bannerDesc %></p>
+      <div class="banner-btns">
+        <a href="tel:<%= settings.phoneShort %>" class="btn btn-primary">📞 电话咨询</a>
+        <a href="/contact" class="btn btn-outline">📝 微信预约</a>
+      </div>
+    </div>
+  </div>
+  <div class="banner-stats">
+    <div class="container">
+      <div class="stat-item">
+        <h3>10+</h3>
+        <p>年维修经验</p>
+      </div>
+      <div class="stat-item">
+        <h3>1000+</h3>
+        <p>成功维修案例</p>
+      </div>
+      <div class="stat-item">
+        <h3>500+</h3>
+        <p>合作企业客户</p>
+      </div>
+      <div class="stat-item">
+        <h3>24h</h3>
+        <p>快速响应服务</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>维修项目</h2>
+      <p>专业维修各类工业设备，覆盖PLC、变频器、电机、伺服等全系列产品</p>
+    </div>
+    <div class="services-grid">
+      <% services.forEach(function(service) { %>
+        <div class="service-card">
+          <div class="service-icon">
+            <% if(service.icon === 'plc') { %>⚙️
+            <% } else if(service.icon === 'inverter') { %>🔌
+            <% } else if(service.icon === 'motor') { %>⚡
+            <% } else if(service.icon === 'servo') { %>🎯
+            <% } else if(service.icon === 'panel') { %>🗄️
+            <% } else if(service.icon === 'compressor') { %>💨
+            <% } else if(service.icon === 'pump') { %>💧
+            <% } else if(service.icon === 'auto') { %>🤖
+            <% } else if(service.icon === 'cnc') { %>🔧
+            <% } else { %>🔧<% } %>
+          </div>
+          <h3><%= service.name %></h3>
+          <p><%= service.summary %></p>
+          <a href="/service/<%= service.slug %>" class="service-link">了解详情 →</a>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section class="section section-gray">
+  <div class="container">
+    <div class="section-title">
+      <h2>服务优势</h2>
+      <p>专业团队、快速响应、可靠服务，为您的设备保驾护航</p>
+    </div>
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <div class="advantage-icon">🏆</div>
+        <h3>丰富经验</h3>
+        <p>多年工业设备维修经验，服务天津地区数百家企业客户，熟悉各类设备故障处理。</p>
+      </div>
+      <div class="advantage-item">
+        <div class="advantage-icon">⚡</div>
+        <h3>快速响应</h3>
+        <p>天津区域快速安排工程师上门，24小时服务响应，紧急情况可加急处理。</p>
+      </div>
+      <div class="advantage-item">
+        <div class="advantage-icon">🔧</div>
+        <h3>专业技术</h3>
+        <p>专业维修工程师团队，熟悉西门子、ABB、三菱、台达等多品牌工业设备。</p>
+      </div>
+      <div class="advantage-item">
+        <div class="advantage-icon">✅</div>
+        <h3>诚信服务</h3>
+        <p>透明沟通，先检测后报价，解决实际问题，维修后提供质保，让客户放心。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section process-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>服务流程</h2>
+      <p>标准化服务流程，确保每一次维修都专业高效</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-icon">1</div>
+        <h4>客户咨询</h4>
+        <p>电话/微信联系</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">2</div>
+        <h4>了解设备情况</h4>
+        <p>沟通故障详情</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">3</div>
+        <h4>安排工程师</h4>
+        <p>快速上门服务</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">4</div>
+        <h4>现场检测维修</h4>
+        <p>先报价后维修</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">5</div>
+        <h4>问题解决</h4>
+        <p>设备恢复运行</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-icon">6</div>
+        <h4>售后服务</h4>
+        <p>维修质保跟进</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cases">
+  <div class="container">
+    <div class="section-title">
+      <h2>维修案例</h2>
+      <p>真实维修案例展示，见证我们的专业实力</p>
+    </div>
+    <div class="cases-grid">
+      <% cases.forEach(function(c) { %>
+        <div class="case-card">
+          <div class="case-image">
+            <span class="case-category"><%= c.categoryName %></span>
+            🔧
+          </div>
+          <div class="case-content">
+            <h3><a href="/case/<%= c.slug %>"><%= c.title %></a></h3>
+            <div class="case-meta">
+              <span>📍 <%= c.district %></span>
+              <span>📅 <%= c.createdAt.substring(0, 10) %></span>
+            </div>
+            <p class="case-desc"><%= c.description %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    <div class="case-more">
+      <a href="/cases" class="btn btn-primary">查看更多案例 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section districts-section" id="area">
+  <div class="container">
+    <div class="section-title">
+      <h2>服务区域</h2>
+      <p>覆盖天津全区域，快速上门维修服务</p>
+    </div>
+    <div class="district-grid">
+      <% districts.forEach(function(d) { %>
+        <a href="/district/<%= d.slug %>" class="district-card">
+          <h4><%= d.name %></h4>
+          <p>机电维修服务</p>
+        </a>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-title">
+      <h2>行业资讯</h2>
+      <p>分享工业设备维修知识，了解最新行业动态</p>
+    </div>
+    <div class="news-grid">
+      <% articles.forEach(function(article) { %>
+        <div class="news-card">
+          <div class="news-image">
+            <span class="news-category"><%= article.categoryName %></span>
+            📄
+          </div>
+          <div class="news-content">
+            <div class="news-date">📅 <%= article.createdAt.substring(0, 10) %></div>
+            <h3><a href="/news/<%= article.slug %>"><%= article.title %></a></h3>
+            <p class="news-summary"><%= article.summary %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    <div class="case-more">
+      <a href="/news" class="btn btn-primary">查看更多资讯 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>设备故障？立即联系我们！</h2>
+      <p>专业维修工程师快速响应，天津地区上门服务</p>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-icon">📞</div>
+      <div class="cta-phone-text">
+        <p>维修服务热线</p>
+        <a href="tel:<%= settings.phoneShort %>"><%= settings.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "天津机电服务中心",
+  "description": "天津机电服务中心专注天津地区工业设备维修，提供PLC维修、变频器维修、电机维修、伺服维修、自动化设备维修等服务。",
+  "telephone": "<%= settings.phone %>",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "天津",
+    "streetAddress": "<%= settings.address %>"
+  },
+  "areaServed": "天津市",
+  "openingHours": "Mo-Su 08:00-20:00",
+  "priceRange": "$$"
+}
+</script>
+
+<%- include('partials/footer') %>
